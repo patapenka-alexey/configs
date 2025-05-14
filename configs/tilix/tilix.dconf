@@ -1,18 +1,20 @@
 [/]
 copy-on-select=false
+enable-wide-handle=true
 paste-strip-trailing-whitespace=true
 prompt-on-close=true
 prompt-on-new-session=false
 quake-specific-monitor=0
 recent-session-files=['/home/ap/temp/tilix_base_window.json', '/home/ap/temp/tilix_cf221_window.json', '/home/ap/.config/tilix/sessions/work.json']
 sidebar-on-right=false
+terminal-title-show-when-single=true
 terminal-title-style='small'
 theme-variant='light'
 use-tabs=true
 warn-vte-config-issue=false
 window-save-state=true
 window-state=43908
-window-style='normal'
+window-style='disable-csd-hide-toolbar'
 
 [keybindings]
 terminal-maximize='<Primary><Shift>m'
