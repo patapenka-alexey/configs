@@ -17,6 +17,7 @@ window-state=43908
 window-style='disable-csd-hide-toolbar'
 
 [keybindings]
+app-preferences='<Primary><Alt>p'
 terminal-maximize='<Primary><Shift>m'
 
 [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
