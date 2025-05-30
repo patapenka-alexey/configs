@@ -2,22 +2,22 @@
   window_state = maximise
   inactive_color_offset = 0.9047619047619048
   enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, SaveLastSessionLayout
-  suppress_multiple_term_dialog = True
   clear_select_on_copy = True
 [keybindings]
   split_horiz = <Primary><Alt>d
   split_vert = <Primary><Alt>r
   toggle_zoom = <Primary><Shift>m
+  preferences = <Primary><Alt>p
 [profiles]
   [[default]]
     allow_bold = False
     icon_bell = False
-    background_color = "#1e2127"
+    background_color = "#282c34"
     font = Consolas 10
     foreground_color = "#fffefe"
     show_titlebar = False
     scrollback_infinite = True
-    palette = "#000000:#e06c75:#98c379:#d19a66:#61afef:#c678dd:#56b6c2:#abb2bf:#5c6370:#e06c75:#98c379:#d19a66:#61afef:#c678dd:#56b6c2:#fffefe"
+    palette = "#282c34:#e06c75:#98c379:#eea563:#61afef:#c678dd:#56b6c2:#77767b:#5e5c64:#e06c75:#98c379:#efa663:#61afef:#c678dd:#56b6c2:#fffefe"
     use_system_font = False
   [[one_dark_white]]
     allow_bold = False
@@ -27,7 +27,7 @@
     foreground_color = "#2A2B32"
     show_titlebar = False
     scrollback_infinite = True
-    palette = "#000000:#DA3E39:#41933E:#855504:#315EEE:#930092:#0E6FAD:#8E8F96:#2A2B32:#DA3E39:#41933E:#855504:#315EEE:#930092:#0E6FAD:#FFFEFE"
+    palette = "#000000:#DA3E39:#41933E:#855504:#1a5fb4:#930092:#0e6fad:#8E8F96:#2A2B32:#DA3E39:#41933E:#855504:#1a5fb4:#930092:#0E6FAD:#FFFEFE"
     use_system_font = False
 [layouts]
   [[default]]
@@ -39,3 +39,4 @@
       parent = window0
       profile = default
 [plugins]
+
