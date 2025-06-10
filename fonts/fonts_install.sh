@@ -10,6 +10,7 @@ if [ ! -d "$DIR" ]; then
 fi
 
 cp $SCRIPT_DIR/consola*.ttf $DIR/
+cp $SCRIPT_DIR/JetBrainsMono*.ttf $DIR/
 
 fc-cache -f -v
 
