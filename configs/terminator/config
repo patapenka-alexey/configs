@@ -29,6 +29,16 @@
     scrollback_infinite = True
     palette = "#000000:#DA3E39:#41933E:#855504:#1a5fb4:#930092:#0e6fad:#8E8F96:#2A2B32:#DA3E39:#41933E:#855504:#1a5fb4:#930092:#0E6FAD:#FFFEFE"
     use_system_font = False
+  [[github_light]]
+    allow_bold = False
+    icon_bell = False
+    background_color = "#f6f8fa"
+    font = Consolas 10
+    foreground_color = "#1f2328"
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#24292f:#cf222e:#1a7f37:#9a6700:#0969da:#8250df:#1b7c83:#6e7781:#57606a:#a40e26:#2da44e:#bf8700:#218bff:#a475f9:#3192aa:#8c959f"
+    use_system_font = False
 [layouts]
   [[default]]
     [[[window0]]]
