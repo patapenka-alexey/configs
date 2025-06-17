@@ -2,7 +2,7 @@
 
 echo Pass 0 or 1 as script parameter to 'turn on' or 'turn off' the touchpad
 
-id=$(xinput | grep Touch[pP]ad | awk '{print $6}' | sed "s/id=//")
+id=$(xinput | grep Touch[pP]ad | cut -f2 -d= | awk '{print $1}')
 echo Touchpad id=$id
 
 if [ "x$1" = "x0" ]; then
