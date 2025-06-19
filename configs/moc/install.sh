@@ -15,7 +15,7 @@ fi
 if [ ! -d "$HOME/.moc/" ]; then
     mkdir $HOME/.moc/
 fi
-cp $SCRIPT_DIR/config $HOME/.moc/config
+cp $SCRIPT_DIR/config $SCRIPT_DIR/equalizer $HOME/.moc/
 
 if [ ! -d "/usr/share/moc/themes" ]; then
     sudo mkdir -p "/usr/share/moc/themes"
@@ -25,4 +25,5 @@ sudo cp $SCRIPT_DIR/themes/* /usr/share/moc/themes
 if [ ! -d "$HOME/.moc/eqsets" ]; then
     mkdir -p "$HOME/.moc/eqsets"
 fi
-sudo cp $SCRIPT_DIR/eq/* $HOME/.moc/eqsets
+sudo cp $SCRIPT_DIR/eqsets/* $HOME/.moc/eqsets
+
