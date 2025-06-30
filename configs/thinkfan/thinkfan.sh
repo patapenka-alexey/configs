@@ -10,6 +10,9 @@ THINKFAN="$( dpkg -l | grep thinkfan )"
 if [[ "x$THINKFAN" == "x" ]]; then
     sudo apt-get install thinkfan
 fi
+if test -f "/etc/thinkfan.conf"; then
+    sudo cp /etc/thinkfan.conf /etc/thinkfan.conf.backup
+fi
 
 #------------------------------------------------------------------------------
 CONF_FILE="$SCRIPT_DIR/thinkfan.conf.tmp"
