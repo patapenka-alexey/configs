@@ -24,4 +24,5 @@
     "workbench.tree.indent": 15,
     "debug.console.fontSize": 13,
     "debug.console.fontFamily": "Consolas",
+    "terminal.integrated.cursorBlinking": true
 }
