@@ -15,7 +15,7 @@ fi
 if [ ! -d "$HOME/.moc/" ]; then
     mkdir $HOME/.moc/
 fi
-cp $SCRIPT_DIR/config $SCRIPT_DIR/equalizer $HOME/.moc/
+cp $SCRIPT_DIR/config  $SCRIPT_DIR/keymap_vim $SCRIPT_DIR/equalizer $HOME/.moc/
 
 if [ ! -d "/usr/share/moc/themes" ]; then
     sudo mkdir -p "/usr/share/moc/themes"
