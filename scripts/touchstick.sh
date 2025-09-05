@@ -4,7 +4,8 @@
 
 echo Pass value of the Speed as script parameter, or default value '-0.35' will be applied
 
-devices=$(xinput | grep -e 'TrackPoint' -e 'Keyboard Mouse' | cut -f2 -d= | awk '{print $1}')
+devices=$(xinput | grep -e 'TrackPoint' -e 'Keyboard Mouse' | grep pointer | cut -f2 -d= | awk '{print $1}')
+echo $devices
 
 value=-0.35
 
@@ -15,9 +16,9 @@ echo Apply value "$value"
 
 for device in $devices
 do
+    set +e # Disable immediate exit on error.
     echo Set $device 'libinput Accel Speed' to $value
     xinput set-prop $device 'libinput Accel Speed' $value
-    continue
 done
 
 # for Tex Shinobi it could be "USB-HID Keyboard Mouse"
