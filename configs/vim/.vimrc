@@ -88,3 +88,6 @@ nnoremap <C-\> :call NerdTreeToggleFind()<CR>
 " nnoremap <C-t> :NERDTreeToggle<CR>
 " nnoremap <C-f> :NERDTreeFind<CR>
 
+" show buffers
+let g:airline#extensions#tabline#enabled = 1
+
