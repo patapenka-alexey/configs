@@ -41,6 +41,17 @@ map <C-v> pi
 imap <C-v> <Esc>pi
 imap <C-z> <Esc>ui
 
+" exit from 'insert' mode by jj/JJ
+inoremap jj <esc>
+inoremap JJ <esc>
+" exit from 'command' mode by jj/JJ
+cnoremap jj <C-c>
+cnoremap JJ <C-c>
+
+" nerdtree plugin
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
 " move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -72,7 +83,6 @@ endif
 "let g:go_def_mode='gopls'
 "let g:go_info_mode='gopls'
 
-" nerdtree plugin
 function! NerdTreeToggleFind()
   if exists("g:NERDTree") && g:NERDTree.IsOpen()
     NERDTreeClose
@@ -88,6 +98,6 @@ nnoremap <C-\> :call NerdTreeToggleFind()<CR>
 " nnoremap <C-t> :NERDTreeToggle<CR>
 " nnoremap <C-f> :NERDTreeFind<CR>
 
-" show buffers
+" Cyclic toggle between buffers - Ctrl+Shift+~ 
 let g:airline#extensions#tabline#enabled = 1
 
