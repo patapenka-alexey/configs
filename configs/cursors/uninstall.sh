@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-sudo rm -rf /usr/share/icons/cz-Viator-Rotor/
-sudo rm -rf /usr/share/icons/cz-Viator-Hourglass/
-sudo rm -rf /usr/share/icons/mac-cursors/
-sudo rm -rf /usr/share/icons/Mocu-Black-Right/
-sudo rm -rf /usr/share/icons/Mocu-White-Right/
+folders=$(ls -d */)
+
+for folder in $folders
+do
+    echo Remove /usr/share/icons/$folder
+    sudo rm -rf /usr/share/icons/$folder
+done
 
 # sudo update-alternatives --remove x-cursor-theme \
 #     /usr/share/icons/mac-cursors/cursor.theme
