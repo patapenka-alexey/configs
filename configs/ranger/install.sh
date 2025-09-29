@@ -21,4 +21,5 @@ fi
 
 cp $SCRIPT_DIR/one_dark.py $RANGER_SCHEMES_DIR/
 cp $SCRIPT_DIR/rc.conf $RANGER_DIR/
+cp $SCRIPT_DIR/rifle.conf $RANGER_DIR/
 
