@@ -8,7 +8,7 @@ sudo apt-get install highlight
 # /usr/share/highlight/themes/
 # ekvoli zmrok monokai candy base16/onedark base16/gruvbox-dark-medium
 # export HIGHLIGHT_STYLE=ekvoli
-
+# export HIGHLIGHT_STYLE=base16/onedark
 
 SCRIPT_DIR="$( dirname -- "$BASH_SOURCE"; )";
 
@@ -21,3 +21,4 @@ fi
 
 cp $SCRIPT_DIR/one_dark.py $RANGER_SCHEMES_DIR/
 cp $SCRIPT_DIR/rc.conf $RANGER_DIR/
+
