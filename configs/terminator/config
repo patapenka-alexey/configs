@@ -19,7 +19,7 @@
     scrollback_infinite = True
     palette = "#282c34:#e06c75:#98c379:#eea563:#61afef:#c678dd:#56b6c2:#77767b:#5e5c64:#e06c75:#98c379:#efa663:#61afef:#c678dd:#56b6c2:#fffefe"
     use_system_font = False
-  [[one_dark_white]]
+  [[OneDarkWhite]]
     allow_bold = False
     icon_bell = False
     background_color = "#F8F8F8"
@@ -29,7 +29,7 @@
     scrollback_infinite = True
     palette = "#000000:#DA3E39:#41933E:#855504:#1a5fb4:#930092:#0e6fad:#8E8F96:#2A2B32:#DA3E39:#41933E:#855504:#1a5fb4:#930092:#0E6FAD:#FFFEFE"
     use_system_font = False
-  [[github_light]]
+  [[GithubLight]]
     allow_bold = False
     icon_bell = False
     background_color = "#f6f8fa"
@@ -39,6 +39,28 @@
     scrollback_infinite = True
     palette = "#24292f:#cf222e:#1a7f37:#9a6700:#0969da:#8250df:#1b7c83:#6e7781:#57606a:#a40e26:#2da44e:#bf8700:#218bff:#a475f9:#3192aa:#8c959f"
     use_system_font = False
+  [[OneHalfDark]]
+    allow_bold = False
+    icon_bell = False
+    show_titlebar = False
+    font = Consolas 10
+    use_system_font = False
+    palette = "#282c34:#e06c75:#98c379:#e5c07b:#61afef:#c678dd:#56b6c2:#dcdfe4:#282c34:#e06c75:#98c379:#e5c07b:#61afef:#c678dd:#56b6c2:#dcdfe4"
+    background_color = "#282c34"
+    cursor_color = "#a3b3cc"
+    foreground_color = "#dcdfe4"
+    background_image = None
+  [[OneHalfLight]]
+    allow_bold = False
+    icon_bell = False
+    show_titlebar = False
+    font = Consolas 10
+    use_system_font = False
+    palette = "#383a42:#e45649:#50a14f:#c18401:#0184bc:#a626a4:#0997b3:#fafafa:#4f525e:#e06c75:#98c379:#e5c07b:#61afef:#c678dd:#56b6c2:#ffffff"
+    background_color = "#fafafa"
+    cursor_color = "#bfceff"
+    foreground_color = "#383a42"
+    background_image = None
 [layouts]
   [[default]]
     [[[window0]]]
