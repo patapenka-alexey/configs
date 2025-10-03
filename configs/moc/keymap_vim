@@ -95,23 +95,24 @@ mark_start =  '
 mark_end =  "
 
 
-#plist_add_stream = ^u
+plist_add_stream = 
 toggle_mixer =  x
 # for softmixer
 toggle_softmixer = M
 history_up =  UP
 history_down =  DOWN
-delete_to_start = ^u
-delete_to_end =  ^k
+delete_to_start = 
+delete_to_end =  
 theme_menu =  V
 
 toggle_equalizer = E
 equalizer_refresh = e
 equalizer_prev = 
-equalizer_next = 
+equalizer_next = ^e
 toggle_make_mono = 
+
 show_lyrics =  
-enqueue_file =  
+enqueue_file = z 
 clear_queue =  Z
 
 exec_command1         = F1
