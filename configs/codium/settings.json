@@ -1,28 +1,35 @@
 {
     "editor.fontLigatures": false,
-    "editor.fontFamily": "Consolas, 'Droid Sans Mono', 'monospace', monospace",
+    "editor.fontFamily": "Consolas, JetBrains Mono, monospace",
     "editor.fontSize": 13,
     "editor.inlayHints.fontFamily": "Consolas",
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "all",
-    "extensions.autoCheckUpdates": false,
     "go.testFlags": [
         "-v",
         "-count=1"
     ],
     "search.showLineNumbers": true,
     "search.useIgnoreFiles": true,
-    "terminal.integrated.fontSize": 13,
     "terminal.integrated.fontFamily": "Consolas",
     "terminal.integrated.fontWeight": "normal",
     "terminal.integrated.fontWeightBold": "normal",
     "terminal.integrated.scrollback": 1000000,
     "update.mode": "manual",
     "update.showReleaseNotes": false,
-    "workbench.colorTheme": "Default Light+",
     "workbench.editor.titleScrollbarSizing": "large",
     "workbench.tree.indent": 15,
     "debug.console.fontSize": 13,
     "debug.console.fontFamily": "Consolas",
-    "terminal.integrated.cursorBlinking": true
+    "extensions.autoUpdate": "onlyEnabledExtensions",
+    "extensions.autoCheckUpdates": false,
+    "window.menuBarVisibility": "compact",
+    "terminal.integrated.fontSize": 13,
+    "chat.commandCenter.enabled": false,
+    "go.toolsManagement.autoUpdate": true,
+    "workbench.colorTheme": "Default Light+",
+    "terminal.integrated.cursorBlinking": true,
+    "files.associations": {
+        "*.libsonnet": "csharp"
+    },
 }
