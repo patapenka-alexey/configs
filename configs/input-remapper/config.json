@@ -1,0 +1,6 @@
+{
+    "version": "2.0.1",
+    "autoload": {
+        "Gtech MI Gaming Mouse Lite": "xiaomi_mouse_lite_Ctrl+CV"
+    }
+}
