@@ -1,0 +1,12 @@
+[user]
+	name = Alexey Potapenko
+[credential]
+	helper = store
+[core]
+	editor = vim
+[alias]
+    hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>'%Creset --abbrev-commit --date=relative
+[init]
+	defaultBranch = master
+[pull]
+	rebase = true
