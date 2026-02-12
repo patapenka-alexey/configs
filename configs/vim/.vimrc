@@ -41,22 +41,24 @@ map <C-v> pi
 imap <C-v> <Esc>pi
 imap <C-z> <Esc>ui
 
-" exit from 'insert' mode by jj/JJ
-inoremap jj <esc>
-inoremap JJ <esc>
-" exit from 'command' mode by jj/JJ
-cnoremap jj <C-c>
-cnoremap JJ <C-c>
-
 " nerdtree plugin
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 " move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" map Alt+jkc to round-robin buffers
+"execute "set <A-j>=^[j"
+"nnoremap <A-j> :bnext<CR>
+nnoremap <C-j> :bnext<CR>
+"execute "set <A-k>=^[k"
+"nnoremap <A-k> :bprev<CR>
+nnoremap <C-k> :bprev<CR>
+"execute "set <A-c>=^[c"
+nnoremap <C-D> :bdelete<CR>
+"nnoremap <M-Tab> :b#<CR>
 
 " arrows can be used for selection
 "vmap <Up> k
@@ -93,7 +95,7 @@ function! NerdTreeToggleFind()
   endif
 endfunction
 
-nnoremap <C-\> :call NerdTreeToggleFind()<CR>
+nnoremap <C-n> :call NerdTreeToggleFind()<CR>
 " nnoremap <C-n> :NERDTree<CR>
 " nnoremap <C-t> :NERDTreeToggle<CR>
 " nnoremap <C-f> :NERDTreeFind<CR>
