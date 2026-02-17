@@ -9,6 +9,7 @@ sudo apt-get install highlight
 # ekvoli zmrok monokai candy base16/onedark base16/gruvbox-dark-medium
 # export HIGHLIGHT_STYLE=ekvoli
 # export HIGHLIGHT_STYLE=base16/onedark
+# export HIGHLIGHT_STYLE=base16/monokai
 
 SCRIPT_DIR="$( dirname -- "$BASH_SOURCE"; )";
 
