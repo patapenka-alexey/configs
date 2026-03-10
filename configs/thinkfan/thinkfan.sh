@@ -35,7 +35,7 @@ done
 #------------------------------------------------------------------------------
 # configure fan mode
 FORCE="
-(0,	0,	50)
+(0,	 0,	50)
 (1,	48,	55)
 (2,	53,	60)
 (3,	58,	65)
@@ -44,8 +44,8 @@ FORCE="
 (7,	73,	32767)
 "
 
-QUITE="
-(0,	0,	60)
+MIDDLE="
+(0,	 0,	60)
 (1,	57,	65)
 (2,	60,	70)
 (3,	65,	75)
@@ -54,12 +54,24 @@ QUITE="
 (7,	80,	32767)
 "
 
+QUITE="
+(0,  0, 65)
+(1, 63, 70)
+(2, 68, 75)
+(3, 73, 80)
+(4, 78, 85)
+(5, 83, 90)
+(7, 88, 32767)
+"
+
 if [[ "x$1" == "xforce" ]]; then
     echo """$FORCE""" >> $CONF_FILE
+elif [[ "x$1" == "xmiddle" ]]; then
+    echo """$MIDDLE""" >> $CONF_FILE
 elif [[ "x$1" == "xquite" ]]; then
     echo """$QUITE""" >> $CONF_FILE
 else
-    echo "usage: thinkfan.sh [force|quite]"
+    echo "usage: thinkfan.sh [force|middle|quite]"
     rm $CONF_FILE
     exit 1
 fi
