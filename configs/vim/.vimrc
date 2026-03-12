@@ -57,7 +57,7 @@ nnoremap <C-j> :bnext<CR>
 "nnoremap <A-k> :bprev<CR>
 nnoremap <C-k> :bprev<CR>
 "execute "set <A-c>=^[c"
-nnoremap <C-D> :bdelete<CR>
+nnoremap <C-i> :bdelete<CR>
 "nnoremap <M-Tab> :b#<CR>
 
 " arrows can be used for selection
