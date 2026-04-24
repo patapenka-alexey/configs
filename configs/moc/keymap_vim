@@ -48,7 +48,7 @@ menu_last_item          = K END
 quit_client             = q
 quit                    = Q
 stop                    = s
-next                    = f
+next                    = w
 previous                = b
 pause                   = SPACE
 toggle_read_tags        = T
@@ -62,7 +62,7 @@ add_directory           = A
 
 clear_playlist          = D
 delete_from_playlist    = d
-save_playlist           = w
+save_playlist           = W
 go_to_playing_file      = g
 go_to_a_directory       = G
 playlist_full_paths     = 
