@@ -7,6 +7,9 @@ set ignorecase              " case insensitive
 set mouse=v                 " middle-click paste with 
 set hlsearch                " highlight search 
 set incsearch               " incremental search
+set ignorecase
+set smartcase               " поиск регистрозависимый, только если в запросе есть заглавные буквы
+set showmatch
 set tabstop=4               " number of columns occupied by a tab 
 set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
 set expandtab               " converts tabs to white space
@@ -25,6 +28,8 @@ set ttyfast                 " Speed up scrolling in Vim
 " set noswapfile            " disable creating swap file
 " set backupdir=~/.cache/vim " Directory to store backup files.
 colorscheme onedark
+
+set history=1000
 
 " keys
 " u = undo

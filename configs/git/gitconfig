@@ -1,5 +1,6 @@
 [user]
 	name = Alexey Potapenko
+    signingkey = 
 [credential]
 	helper = store
 [core]
@@ -10,3 +11,7 @@
 	defaultBranch = master
 [pull]
 	rebase = true
+[commit]
+	gpgsign = false
+[tag]
+	gpgSign = false
