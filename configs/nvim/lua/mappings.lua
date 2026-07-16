@@ -12,4 +12,6 @@ map("v", "<C-x>", '"+d<Esc>i', { desc = "cut to clipboard" })
 map("n", "<C-v>", '"+pi', { desc = "paste from clipboard" })
 map("i", "<C-v>", '<Esc>"+pi', { desc = "paste from clipboard" })
 
+map("n", "<C-F>", "<cmd>Telescope live_grep<CR>", { desc = "search in all files" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
