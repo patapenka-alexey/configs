@@ -14,4 +14,5 @@ map("i", "<C-v>", '<Esc>"+pi', { desc = "paste from clipboard" })
 
 map("n", "<C-F>", "<cmd>Telescope live_grep<CR>", { desc = "search in all files" })
 
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+map({ "n", "i", "v" }, "<C-s>", "<Esc><cmd>:w<CR>", { desc = "save and enter normal mode" })
+
