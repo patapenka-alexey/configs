@@ -309,7 +309,7 @@ function SHELL_OUTPUT {
          printf (fg_gray"%1s%1s %s"fg_gray"%.1s"none" % -"wdth"s %.20s %.20s\n",
             importance, timestamp, ind, status, label, project, context);
       }' | CGI2STR 
-      [[ $SHELL_DEBUG == 1 ]] && TS eof
+[[ $SHELL_DEBUG == 1 ]] && TS eof; true
 }
 
 
@@ -317,7 +317,7 @@ function SHELL_OUTPUT {
 #Webinterface
 #---
 [[ $SHELL_DEBUG == 1 ]] && TS webinterface
-if [[ -z ${QUERY_STRING} ]]; then
+if [[ ! -v QUERY_STRING ]]; then
    SHELL_PARSE "$@"
    [[ -z $ACTION ]] && ACTION="SHOW"
    if [[ -n $INDEX ]]; then
@@ -523,8 +523,8 @@ function NICE_DATE {
    local YEAR="`date +%Y`"
    local MONTH="`date +%m`"
    local NEXTMONTH=`echo $(( $MONTH+1 )) | awk '{printf("%.2d",$1)}'`
-   [[ $1 == "CURRENT" ]] && cal -m | sed -r -e 's/\n//g;s/([^ ]*) '$YEAR'/  \1/;s/[0-9]*/<a href=\"javascript:set_timestamp('$YEAR$MONTH'&)\" class=\"date\">&<\/a>/g'
-   [[ $1 == "NEXT" ]] && cal -m -3 | sed -r -e 's/^.{44}//g;s/\n//g;s/([^ ]*) '$YEAR'/  \1/;s/[0-9]*/<a href=\"javascript:set_timestamp('$YEAR$NEXTMONTH'&)\" class=\"date\">&<\/a>/g'
+   [[ $1 == "CURRENT" ]] && ncal -M | sed -r -e 's/\n//g;s/([^ ]*) '$YEAR'/  \1/;s/[0-9]*/<a href=\"javascript:set_timestamp('$YEAR$MONTH'&)\" class=\"date\">&<\/a>/g'
+   [[ $1 == "NEXT" ]] && ncal -M -3 | sed -r -e 's/^.{44}//g;s/\n//g;s/([^ ]*) '$YEAR'/  \1/;s/[0-9]*/<a href=\"javascript:set_timestamp('$YEAR$NEXTMONTH'&)\" class=\"date\">&<\/a>/g'
    echo "</pre>"
 }
 
@@ -532,6 +532,7 @@ function SHOW_CONTEXTS {
 cat << __EOF__
    <SCRIPT LANGUAGE="JavaScript">window.setTimeout("hidediv('ACTION')",$DELAY)</script>
 
+   <form name="gtd" ACTION="${FULL_URL}" method=get>
    <table width="100%">
       <colgroup>
          <col width="85%">
@@ -561,14 +562,13 @@ cat << __EOF__
           </td>
           <td style="border-bottom:1px solid; border-left:1px solid">
             <a href="${BASE_URL}&projects=&contexts=" class="context project">All</a>&nbsp;&nbsp;
-            <a href="#">Today</a>&nbsp;&nbsp;
-            <a href="#">Statistics</a>&nbsp;&nbsp;
+             <a href="${BASE_URL}&projects=&contexts=&timestamp=`date +%Y%m%d`" class="context project">Today</a>&nbsp;&nbsp;
+             <a href="${BASE_URL}&projects=&contexts=&ACTION=STATISTICS" class="context project">Statistics</a>&nbsp;&nbsp;
          </td>
       </tr>
       <tr>
          <td valign=top>
             <table>
-               <form name="gtd" ACTION="${FULL_URL}" method=get>
 __EOF__
 }
 
@@ -626,6 +626,48 @@ function SHOW_ACTIONS {
    ' | CGI2STR
 }
 
+function SHOW_STATISTICS {
+   local TOTAL=`wc -l < $TODO`
+   local ACTIVE=`awk '/status=a/' $TODO | wc -l`
+   local WAITING=`awk '/status=w/' $TODO | wc -l`
+   local DONE=`awk '/status=d/' $TODO | wc -l`
+   local OVERDUE=`awk -v today=\`date +%Y%m%d\` '/timestamp=/ && $0 !~ /timestamp=99999999/ { for(i=1;i<=NF;i++){ if($i ~ /timestamp/) { gsub("timestamp=","",$i); if($i+0 < today+0) print } } }' $TODO | wc -l`
+
+cat << __EOF__
+   <tr>
+      <td colspan="2">
+         <table width="100%" style="border:2px solid; padding:8px">
+            <tr><td colspan="2"><b>Statistics</b></td></tr>
+            <tr><td>Total tasks</td><td align="right">$TOTAL</td></tr>
+            <tr><td>Active</td><td align="right">$ACTIVE</td></tr>
+            <tr><td>Waiting</td><td align="right">$WAITING</td></tr>
+            <tr><td>Done</td><td align="right">$DONE</td></tr>
+            <tr><td>Overdue</td><td align="right">$OVERDUE</td></tr>
+__EOF__
+
+   echo "<tr><td colspan=\"2\"><br><b>Projects</b></td></tr>"
+   LIST_PROJ | awk '
+   {
+      for(i=1;i<=NF;i++) {
+         if($i!="") { gsub(/\+/," ",$i); printf "<tr><td>&nbsp;&nbsp;"$i"</td></tr>" }
+      }
+   }' | CGI2STR
+
+   echo "<tr><td colspan=\"2\"><br><b>Contexts</b></td></tr>"
+   LIST_CONT | awk '
+   {
+      for(i=1;i<=NF;i++) {
+         if($i!="") { gsub(/\+/," ",$i); printf "<tr><td>&nbsp;&nbsp;"$i"</td></tr>" }
+      }
+   }' | CGI2STR
+
+cat << __EOF__
+         </table>
+      </td>
+   </tr>
+__EOF__
+}
+
 function SHOW_INPUT {
 cat << __EOF__
    <hr>
@@ -639,7 +681,7 @@ cat << __EOF__
          </tr>
          <tr>
             <td class="inputfield"><input type="text" size="50" name="LABEL" value="`echo ${LABEL} | CGI2STR | sed 's/^ //'`"></td>
-            <td>Label</td>
+            <td>Task text</td>
          </tr>
          <tr>
             <td class="inputfield">
@@ -762,7 +804,11 @@ BASE_URL="`basename $0`?"
 FULL_URL="`basename $0`?contexts=`echo $CONTEXTS | STR2CGI`&projects=`echo $PROJECTS | STR2CGI`"
 
 SHOW_CONTEXTS
-SHOW_ACTIONS
+if [[ $ACTION == STATISTICS ]]; then
+   SHOW_STATISTICS
+else
+   SHOW_ACTIONS
+fi
 SHOW_PROJECTS
 SHOW_INPUT
 
@@ -771,4 +817,4 @@ HTML_TRAILER
 
 
 
-[[ $SHELL_DEBUG == 1 ]] && TS eof
+[[ $SHELL_DEBUG == 1 ]] && TS eof&& TS eof TS eof; true
