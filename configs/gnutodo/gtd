@@ -107,26 +107,26 @@ function CK_IDX { echo $1 | awk '{printf("%.3d",$1)}'; }
 function SHOWENTRY {  cat $TODO | MK_IDX | grep "^I:$1" | RM_IDX ; }
 function RM_ENTRY { cat $TODO | MK_IDX | grep -v "^I:$1" | RM_IDX ; }
 
-function COMPLETE_TIMESTAMP { 
+function COMPLETE_TIMESTAMP {
    awk '
-      length($0)==4{print"'`date +%Y`'"$0;exit;}  
-      length($0)==2{print"'`date +%Y%m`'"$0;exit;}  
+      length($0)==4{print"'`date +%Y`'"$0;exit;}
+      length($0)==2{print"'`date +%Y%m`'"$0;exit;}
       length($0)==7{yearmonth=$0;day=$0;gsub(".$","",yearmonth);gsub("^......","",day);print yearmonth"0"day}
       length($0)==8{print;exit;}
-      ' ; 
+      ' ;
 }
 
-function getval { 
-   TAG=$1; 
-   shift; 
+function getval {
+   TAG=$1;
+   shift;
    if [[ $TAG == INDEX ]]; then
-      echo "$@" | sed 's/&/ /g;s/%/_percent_/g' | awk '{for(i=1;i<=NF;i++){if($i~/'$TAG'/){gsub("'$TAG'=","",$i);printf $i" "}}}' | sed 's/ $//;s/_percent_/%/g;' 
+      echo "$@" | sed 's/&/ /g;s/%/_percent_/g' | awk '{for(i=1;i<=NF;i++){if($i~/'$TAG'/){gsub("'$TAG'=","",$i);printf $i" "}}}' | sed 's/ $//;s/_percent_/%/g;'
    elif [[ $TAG == projects ]]; then
-      echo "$@" | sed 's/&/ /g;s/%/_percent_/g' | awk '{for(i=1;i<=NF;i++){if($i~/'$TAG'/){gsub("'$TAG'=","",$i);printf $i" "}}}' | sed 's/ $//;s/_percent_/%/g;'  
+      echo "$@" | sed 's/&/ /g;s/%/_percent_/g' | awk '{for(i=1;i<=NF;i++){if($i~/'$TAG'/){gsub("'$TAG'=","",$i);printf $i" "}}}' | sed 's/ $//;s/_percent_/%/g;'
    elif [[ $TAG == contexts ]]; then
-      echo "$@" | sed 's/&/ /g;s/%/_percent_/g' | awk '{for(i=1;i<=NF;i++){if($i~/'$TAG'/){gsub("'$TAG'=","",$i);printf $i" "}}}' | sed 's/ $//;s/_percent_/%/g;' 
-   else 
-      echo "$@" | grep "$TAG" | sed 's/\&/ /g' | grep "$TAG" | sed -r -e 's/\&/ /g;s/.*'$TAG'=([^ ]*).*/\1/'; 
+      echo "$@" | sed 's/&/ /g;s/%/_percent_/g' | awk '{for(i=1;i<=NF;i++){if($i~/'$TAG'/){gsub("'$TAG'=","",$i);printf $i" "}}}' | sed 's/ $//;s/_percent_/%/g;'
+   else
+      echo "$@" | grep "$TAG" | sed 's/\&/ /g' | grep "$TAG" | sed -r -e 's/\&/ /g;s/.*'$TAG'=([^ ]*).*/\1/';
    fi
 }
 
@@ -141,7 +141,7 @@ function SHOW {
    [[ -z $TIMESTAMP ]] && local TIMESTAMP=$TIMESTAMP_DEFAULT
    REGEX_PROJ="`echo "($PROJECTS)" | sed 's/ /|/g;s/|)/)/;'`";
    REGEX_CONT="`echo "($CONTEXTS)" | sed 's/ /|/g;s/|)/)/;'`";
-         
+
    cat $TODO | MK_IDX | egrep "$REGEX_PROJ" | egrep "$REGEX_CONT" | awk -v timestamp=$TIMESTAMP -v states=$STATES -v importance=$IMPORTANCE '
       /status=[states]/ {
          flag=0;
@@ -160,7 +160,7 @@ function ADD {
    [[ -z $IMPORTANCE ]] && local IMPORTANCE=0
    [[ -z $TIMESTAMP ]] && local TIMESTAMP=$TIMESTAMP_DEFAULT
    [[ -z $LABEL ]] && [[ -n $ARGS ]] && LABEL="`echo $ARGS | STR2CGI`"
-   local ITEM="status=$STATES importance=$IMPORTANCE timestamp=$TIMESTAMP project=$PROJECTS context=$CONTEXTS label=$LABEL"
+   local ITEM="status=$STATES importance=$IMPORTANCE timestamp=$TIMESTAMP project=$PROJECTS context=$CONTEXTSlabel=$LABEL"
    echo "Adding: $ITEM"
    echo "$ITEM" >> $TODO
 }
@@ -175,7 +175,7 @@ function EDIT {
    [[ -z $PROJECTS ]] && local PROJECTS="`getval project $ENTRY`"
    [[ -z $CONTEXTS ]] && local CONTEXTS="`getval context $ENTRY`"
    [[ -z $LABEL ]] && local LABEL="`getval label $ENTRY`"
-   local ITEM="status=$STATES importance=$IMPORTANCE timestamp=$TIMESTAMP project=$PROJECTS context=$CONTEXTS label=$LABEL"
+   local ITEM="status=$STATES importance=$IMPORTANCE timestamp=$TIMESTAMP project=$PROJECTS context=$CONTEXTSlabel=$LABEL"
    RM_ENTRY $INDEX > $TMPFILE
    echo "$ITEM" >> $TMPFILE
    mv $TMPFILE $TODO
@@ -230,7 +230,7 @@ function SHELL_PARSE {
          p) PROJECTS=${PROJECTS}"`echo $OPTARG | STR2CGI` "; ;;
          c) CONTEXTS=${CONTEXTS}"`echo $OPTARG | STR2CGI` "; ;;
          l) LABEL="`echo $OPTARG | STR2CGI`"; ;;
-   
+
          a) ACTION="ADD"; ;;
          e) ACTION="EDIT"; INDEX=$INDEX"`CK_IDX $OPTARG` "; ;;
          d) ACTION="DONE"; INDEX=$INDEX"`CK_IDX $OPTARG` "; ;;
@@ -308,7 +308,7 @@ function SHELL_OUTPUT {
          wdth=columns-16-10-10-10
          printf (fg_gray"%1s%1s %s"fg_gray"%.1s"none" % -"wdth"s %.20s %.20s\n",
             importance, timestamp, ind, status, label, project, context);
-      }' | CGI2STR 
+      }' | CGI2STR
 [[ $SHELL_DEBUG == 1 ]] && TS eof; true
 }
 
@@ -325,12 +325,12 @@ if [[ ! -v QUERY_STRING ]]; then
       exit
    fi
    if [[ $ACTION == "SHOW" ]]; then SHELL_OUTPUT;
-   else $ACTION; fi;  
+   else $ACTION; fi;
    exit
 fi
 
 
-function HTML_HEADER { 
+function HTML_HEADER {
 cat << __EOF__
 Content-type: text/html
 
@@ -342,14 +342,14 @@ Content-type: text/html
    <base target="_top">
    <style>
          BODY {
-            background-color: #f0f0f0; 
-            COLOR: #404040; 
-            WIDTH: 99%;	
+            background-color: #f0f0f0;
+            COLOR: #404040;
+            WIDTH: 99%;
             font-size: 14px;
             font-family: Verdana;
          }
 
-         A:link { TEXT-DECORATION: none	}
+         A:link { TEXT-DECORATION: none }
          A:visited { COLOR: #606060; TEXT-DECORATION: none }
          A:active { COLOR: #888888; TEXT-DECORATION: none; }
          A:hover { BACKGROUND-COLOR: #ffffff; COLOR: #ff0000; TEXT-DECORATION: none }
@@ -372,7 +372,7 @@ Content-type: text/html
          .context { color: #404040; background: #D0D0D0; padding: 1px; }
          .selected { color: #fff; background: #FFA500; padding: 1px; }
          .date { color: #404040; }
-         .inputfield { color: #404040; background: #D0D0D0; padding: 1px; } 
+         .inputfield { color: #404040; background: #D0D0D0; padding: 1px; }
          .active { }
          .waiting { background: #e0e0e0; padding: 1px; }
          .done { background: #e0e0e0; padding: 1px; }
@@ -416,8 +416,8 @@ Content-type: text/html
 
          function fkt_chk(val) {
             n_checked = 0;
-            for (i = 0; i < document.gtd.INDEX.length; i++) 
-               if (document.gtd.INDEX[i].checked == true) 
+            for (i = 0; i < document.gtd.INDEX.length; i++)
+               if (document.gtd.INDEX[i].checked == true)
                   n_checked++;
             if (n_checked == 0) {
             } else if (n_checked == 1) {
@@ -425,8 +425,8 @@ Content-type: text/html
             }
          }
 
-         // Hiding 
-         function switchdiv(id){ 
+         // Hiding
+         function switchdiv(id){
             if (document.getElementById) { // DOM3 = IE5, NS6
                if (document.getElementById(id).style.display == 'none') {
                   showdiv(id);
@@ -485,7 +485,7 @@ function HTML_PARSE {
    LABEL="`getval LABEL ${QUERY_STRING}`"
 
    if [[ -z $ACTION ]]; then
-      if [[ -z $INDEX ]]; then 
+      if [[ -z $INDEX ]]; then
          [[ -n $LABEL ]] && ACTION="ADD"
       else
          if ( [[ -n $LABEL ]] || [[ -n $PROJECTS ]] || [[ -n $CONTEXTS ]] || [[ -n $TIMESTAMP ]] || [[ -n $IMPORTANCE ]] ); then
@@ -499,10 +499,10 @@ function HTML_PARSE {
       echo "<span id='ACTION' class='action'>"
       DELAY=5000
       if [[ $ACTION == ADD ]]; then
-         $ACTION 
+         $ACTION
       elif [[ $ACTION != SHOW ]]; then
          for i in `echo $INDEX | sed 's/ /\n/g' | sort -nr`; do
-            $ACTION $i 
+            $ACTION $i
          done
       fi
       LABEL=""
@@ -515,7 +515,7 @@ function HTML_PARSE {
    fi
 
    [[ -z $TIMESTAMP ]] && TIMESTAMP=$TIMESTAMP_DEFAULT
-   
+
 }
 
 function NICE_DATE {
@@ -537,7 +537,7 @@ cat << __EOF__
       <colgroup>
          <col width="85%">
          <col width="15%">
-      </colgroup>                         
+      </colgroup>
       <tr>
          <td style="border-bottom:1px solid;">
             <table width="100%">
@@ -546,16 +546,16 @@ cat << __EOF__
 __EOF__
 
 LIST_CONT | awk '
-   { 
-      for (i=1;i<=NF;i++){ 
-         print "<a href=\"'${BASE_URL}'&contexts="$i"&projects='${PROJECTS}'\" class=\"context\">"$i"</a>&nbsp;&nbsp;&nbsp;" 
-      } 
+   {
+      for (i=1;i<=NF;i++){
+         print "<a href=\"'${BASE_URL}'&contexts="$i"&projects='${PROJECTS}'\" class=\"context\">"$i"</a>&nbsp;&nbsp;&nbsp;"
+      }
    }' | CGI2STR
 
 cat << __EOF__
                   </td>
                   <td align="right">
-                     <a href="${BASE_URL}&contexts=&projects=${PROJECTS}" class="context">All</a>&nbsp;   
+                     <a href="${BASE_URL}&contexts=&projects=${PROJECTS}" class="context">All</a>&nbsp;
                   </td>
                </tr>
             </table>
@@ -581,10 +581,10 @@ cat << __EOF__
 __EOF__
 
 LIST_PROJ | awk '
-   { 
-      for (i=1;i<=NF;i++){ 
-         print "<a href=\"'${BASE_URL}'&projects="$i"&contexts='${CONTEXTS}'\" class=\"project\">"$i"</a><br class=\"project\">" 
-      } 
+   {
+      for (i=1;i<=NF;i++){
+         print "<a href=\"'${BASE_URL}'&projects="$i"&contexts='${CONTEXTS}'\" class=\"project\">"$i"</a><br class=\"project\">"
+      }
    }' | CGI2STR
 
 cat << __EOF__
@@ -603,7 +603,7 @@ function SHOW_ACTIONS {
             gsub("I:","",$i);
             ind="<td><input onclick=\"fkt_chk("$i")\" type=\"checkbox\" name=\"INDEX\" value=\""$i"\"></td>";
          } else if ($i ~ /status/) {
-            gsub("status=","",$i); 
+            gsub("status=","",$i);
             if ($i ~ /a/) { status="<td><span class=active>></span></td>"; }
             else if ($i == "w") { status="<td><span class=waiting><</span></td>"; }
             else { status="<td></td>"; }
@@ -691,11 +691,11 @@ cat << __EOF__
 __EOF__
 
 LIST_PROJ | awk '
-   { 
-      for (i=1;i<=NF;i++){ 
+   {
+      for (i=1;i<=NF;i++){
          # if ($i ~ /'${PROJECTS}'/) { printf "<option selected>"; }
          printf "<option>";
-         print $i"</option>"} 
+         print $i"</option>"}
    }' | CGI2STR
 
 cat << __EOF__
@@ -712,9 +712,9 @@ __EOF__
 
 LIST_CONT | awk '
    {
-      for (i=1;i<=NF;i++){ 
+      for (i=1;i<=NF;i++){
          printf "<option>";
-         print $i"</option>"} 
+         print $i"</option>"}
    }' | CGI2STR
 
 cat << __EOF__
@@ -813,8 +813,5 @@ SHOW_PROJECTS
 SHOW_INPUT
 
 HTML_TRAILER
-
-
-
 
 [[ $SHELL_DEBUG == 1 ]] && TS eof&& TS eof TS eof; true
