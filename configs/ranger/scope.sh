@@ -118,8 +118,20 @@ handle_extension() {
 
         lua)
             # Try using 'bat' for syntax-highlighted previews
-            batcat --style=numbers --color=always "${FILE_PATH}" && exit 5
+            batcat -Pp --color=always "${FILE_PATH}" && exit 5
             # If 'bat' is not available, fall back to 'cat'
+            cat "${FILE_PATH}" && exit 5
+            exit 1
+            ;;
+
+        md|markdown)
+            # Try glow first (rendered Markdown)
+            glow --style dark "${FILE_PATH}" && exit 5
+            # Fallback to mdcat
+            mdcat "${FILE_PATH}" && exit 5
+            # Fallback to bat
+            batcat -Pp --color=always "${FILE_PATH}" && exit 5
+            # Final fallback
             cat "${FILE_PATH}" && exit 5
             exit 1
             ;;
