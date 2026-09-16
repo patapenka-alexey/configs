@@ -31,6 +31,8 @@ colorscheme onedark
 
 set history=1000
 
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+
 " keys
 " u = undo
 " Ctrl + r = redo
