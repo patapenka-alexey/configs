@@ -12,3 +12,6 @@ sudo update-icon-caches /usr/share/icons/*
 
 #sudo update-alternatives --auto x-cursor-theme
 
+# sources:
+# https://github.com/charakterziffer/cursor-toolbox
+# https://www.opendesktop.org/s/Cinnamon/p/1229367
