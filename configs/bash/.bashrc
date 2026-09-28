@@ -115,6 +115,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias bat='batcat -n'
+alias batc='batcat -Pp'
 alias code='codium'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -140,8 +141,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH=$PATH:$HOME/.local/bin/:$HOME/.local/lib/:/usr/local/go/bin:$HOME/go/bin/
 
+export PATH=$PATH:$HOME/.local/bin/:$HOME/.local/lib/:/usr/local/go/bin:$HOME/go/bin/
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -152,5 +153,21 @@ if [ TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 
 # ranger fm used it for internal viewer
-export HIGHLIGHT_STYLE=base16/onedark
+#export HIGHLIGHT_STYLE=base16/onedark
+#export HIGHLIGHT_STYLE=base16/outrun-dark
+export HIGHLIGHT_STYLE=base16/monokai
+
+
+# pnpm
+export PNPM_HOME="/home/ap/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# run `fish` shell automatically
+# exec fish
+
+export GPG_TTY=$(tty)
 
