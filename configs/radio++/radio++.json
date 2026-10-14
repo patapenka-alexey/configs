@@ -1,0 +1,289 @@
+{
+    "layout1": {
+        "type": "layout",
+        "height": 600,
+        "width": 800,
+        "pages": [
+            "search-page",
+            "my-stations-page",
+            "preferences-page"
+        ],
+        "search-page": {
+            "type": "page",
+            "title": "Find Station",
+            "sections": [
+                "find-station-section"
+            ]
+        },
+        "my-stations-page": {
+            "type": "page",
+            "title": "My Stations",
+            "sections": [
+                "station-list-section"
+            ]
+        },
+        "preferences-page": {
+            "type": "page",
+            "title": "Preferences",
+            "sections": [
+                "appearance-section",
+                "volume-section",
+                "youtube-section"
+            ]
+        },
+        "station-list-section": {
+            "type": "section",
+            "title": "List of stations",
+            "keys": [
+                "tree"
+            ]
+        },
+        "find-station-section": {
+            "type": "section",
+            "title": "Search Radio station",
+            "keys": [
+                "radio-search-widget"
+            ]
+        },
+        "appearance-section": {
+            "type": "section",
+            "title": "Appearance",
+            "keys": [
+                "icon-type",
+                "color-on",
+                "color-paused",
+                "channel-on-panel"
+            ]
+        },
+        "volume-section": {
+            "type": "section",
+            "title": "Volume",
+            "keys": [
+                "keep-volume-between-sessions",
+                "initial-volume"
+            ]
+        },
+        "youtube-section": {
+            "type": "section",
+            "title": "YouTube Download",
+            "keys": [
+                "youtube-download-cli",
+                "music-download-dir-select"
+            ]
+        }
+    },
+    "tree": {
+        "type": "list",
+        "height": 400,
+        "columns": [
+            {
+                "id": "inc",
+                "title": "Show in list",
+                "type": "boolean",
+                "default": true
+            },
+            {
+                "id": "name",
+                "title": "Title",
+                "type": "string"
+            },
+            {
+                "id": "url",
+                "title": "URL",
+                "type": "string"
+            }
+        ],
+        "default": [
+            {
+                "name": "Smooth Chill",
+                "url": "https://media-ssl.musicradio.com/ChillMP3",
+                "inc": true
+            },
+            {
+                "name": "Austrian Rock Radio",
+                "url": "http://live.antenne.at/arr",
+                "inc": true
+            },
+            {
+                "name": "R\u00e1dio KIKS Rock",
+                "url": "https://stream.radiokiks.sk/kiks_rock.mp3",
+                "inc": true
+            },
+            {
+                "name": "Radio BOB",
+                "url": "http://live6.infonetmedia.si/Europa05",
+                "inc": true
+            },
+            {
+                "name": "Deep House Radio",
+                "url": "http://62.210.105.16:7000/stream",
+                "inc": true
+            }
+        ],
+        "value": [
+            {
+                "inc": true,
+                "name": "Synthwave City FM - New",
+                "url": "https://synthwave-rex.radioca.st/stream"
+            },
+            {
+                "inc": true,
+                "name": "Smooth Chill",
+                "url": "https://media-ssl.musicradio.com/ChillMP3"
+            },
+            {
+                "inc": true,
+                "name": "Radio Record Synthwave",
+                "url": "http://radiorecord.hostingradio.ru/synth96.aacp"
+            },
+            {
+                "inc": true,
+                "name": "Synthwave Neon City laut.fm",
+                "url": "https://stream.laut.fm/synthwave"
+            },
+            {
+                "inc": true,
+                "name": "Laut.fm House Beatz and Waves",
+                "url": "http://stream.laut.fm/house_beatz_and_waves"
+            },
+            {
+                "inc": true,
+                "name": "Laut.fm Vaporwave",
+                "url": "http://stream.laut.fm/vaporwave.m3u"
+            },
+            {
+                "inc": true,
+                "name": "ABC News Radio MP3",
+                "url": "http://www.abc.net.au/res/streaming/audio/mp3/news_radio.pls"
+            },
+            {
+                "inc": true,
+                "name": "\u0420\u0430\u0434\u0438\u043e Sputnik (\u043d\u043e\u0432\u043e\u0441\u0442\u0438) / Radio Sputnik (news)",
+                "url": "https://icecast-rian.cdnvideo.ru/voicerus"
+            },
+            {
+                "inc": true,
+                "name": "Wired FM - FM 99.9 - Limerick, Ireland",
+                "url": "https://s2.radio.co/sf0986595a/listen"
+            },
+            {
+                "inc": true,
+                "name": "StarBox Irish Folk",
+                "url": "https://drive.uber.radio/uber/starboxirishfolk/icecast.audio"
+            },
+            {
+                "inc": true,
+                "name": "KSKO-FM 89.5 McGrath, AK  (MP3 Stream)",
+                "url": "https://ksko.streamguys1.com/live"
+            },
+            {
+                "inc": true,
+                "name": "790 AM - KCAM Glennallen Alaska",
+                "url": "https://streams.radiomast.io/kcam"
+            },
+            {
+                "inc": true,
+                "name": "Flashback 60s",
+                "url": "https://ice-11.spilarinn.is/60flashback"
+            },
+            {
+                "inc": true,
+                "name": "\u0440\u0430\u0434\u0438\u043e \u041c\u0438\u043d\u0441\u043a 92.4",
+                "url": "https://radio.mk.by:8443/radiominsk"
+            },
+            {
+                "inc": true,
+                "name": "\u0420\u0430\u0434\u0438\u043e \u041c\u0438\u043d\u0441\u043a\u0430\u044f \u0412\u043e\u043b\u043d\u0430 97.4 FM",
+                "url": "https://stream2.datacenter.by/mvradio"
+            },
+            {
+                "inc": true,
+                "name": "\u0420\u0443\u0441\u0441\u043a\u043e\u0435 \u0440\u0430\u0434\u0438\u043e \u041c\u0438\u043d\u0441\u043a 98.9 FM",
+                "url": "https://stream.rusradio.by:8443/live128"
+            }
+        ]
+    },
+    "icon-type": {
+        "type": "combobox",
+        "description": "Icon type",
+        "default": "SYMBOLIC",
+        "options": {
+            "Symbolic": "SYMBOLIC",
+            "Full Color": "FULLCOLOR",
+            "Bicolor": "BICOLOR"
+        },
+        "value": "SYMBOLIC"
+    },
+    "color-on": {
+        "type": "colorchooser",
+        "default": "#27ae60",
+        "dependency": "icon-type=SYMBOLIC",
+        "description": "Color of symbolic icon when playing a radio station",
+        "value": "#27ae60"
+    },
+    "color-paused": {
+        "type": "colorchooser",
+        "default": "#9fe1e7",
+        "dependency": "icon-type=SYMBOLIC",
+        "description": "Color of symbolic icon while a radio station is paused",
+        "value": "#9fe1e7"
+    },
+    "channel-on-panel": {
+        "type": "checkbox",
+        "description": "Show current radio station on the panel",
+        "default": false,
+        "value": false
+    },
+    "keep-volume-between-sessions": {
+        "type": "checkbox",
+        "description": "Remember volume after stopping the radio",
+        "default": true,
+        "value": true
+    },
+    "initial-volume": {
+        "type": "spinbutton",
+        "default": 50,
+        "min": 5,
+        "max": 100,
+        "step": 5,
+        "description": "Initial volume",
+        "tooltip": "The initial volume is applied when clicking on a radio stream and no other radio stream is already running",
+        "dependency": "keep-volume-between-sessions!=true",
+        "value": 50
+    },
+    "last-volume": {
+        "type": "generic",
+        "value": 80,
+        "default": 80
+    },
+    "last-url": {
+        "type": "generic",
+        "value": "https://synthwave-rex.radioca.st/stream",
+        "default": null
+    },
+    "youtube-download-cli": {
+        "type": "combobox",
+        "description": "YouTube Download CLI tool",
+        "tooltip": "The CLI tool used to download songs from YouTube",
+        "default": "yt-dlp",
+        "options": {
+            "yt-dlp": "yt-dlp",
+            "youtube-dl": "youtube-dl"
+        },
+        "value": "yt-dlp"
+    },
+    "music-download-dir-select": {
+        "type": "filechooser",
+        "description": "Download directory",
+        "tooltip": "Songs downloaded from YouTube will be saved to this directory.",
+        "default": "~/Music/Radio",
+        "select-dir": true,
+        "value": "~/Music/Radio"
+    },
+    "radio-search-widget": {
+        "type": "custom",
+        "file": "RadioSearchWidget.py",
+        "widget": "RadioSearchWidget"
+    },
+    "__md5__": "7f9961931fb7b2f34af15cf7503ad727"
+}
