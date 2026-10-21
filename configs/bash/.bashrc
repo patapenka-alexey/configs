@@ -65,7 +65,22 @@ parse_git_branch(){
 }
 
 parse_last_3_dir(){
-    echo ${PWD#${PWD%/*/*/*}/}
+    if [ "$PWD" = "/" ]; then
+        printf '/'
+        return
+    fi
+    local IFS='/'
+    local -a parts=($PWD)
+    local n=${#parts[@]}
+    local start=$((n-3))
+    [ $start -lt 1 ] && start=1
+    local out=""
+    local i
+    for ((i=start; i<n-1; i++)); do
+        out+="${parts[i]:0:1}/"
+    done
+    out+="${parts[n-1]}"
+    printf '%s' "$out"
 }
 
 if [ "$color_prompt" = yes ]; then
