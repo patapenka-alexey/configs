@@ -186,3 +186,7 @@ esac
 
 export GPG_TTY=$(tty)
 
+export IGNOREEOF=4   # Must press Ctrl+D 10 times to exit
+# or
+# set -o ignoreeof     # Prevents Ctrl+D from exiting the shell entirely, you must type `exit`
+
